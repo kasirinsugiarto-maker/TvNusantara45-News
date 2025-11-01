@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TV NUSANTARA 45 — Berita Indonesia</title>
+  <meta name="description" content="TV NUSANTARA 45 — Mengawal Persatuan dan Kesatuan. Berita nasional, daerah, ekonomi, budaya, dan teknologi." />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/logo.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="assets/logo.png" alt="TV Nusantara45 logo" class="logo">
+        <div class="brand-text">
+          <h1>TV NUSANTARA 45</h1>
+          <p class="slogan">Mengawal Persatuan dan Kesatuan</p>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="/">Beranda</a>
+        <a href="#kategori">Kategori</a>
+        <a href="/tentang.html">Tentang</a>
+        <a href="/kontak.html">Kontak</a>
+        <a href="/admin/">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Berita Terbaru</h2>
+      <p class="lead">Kumpulan berita pilihan seputar Indonesia, politik, ekonomi, budaya, dan teknologi.</p>
+    </section>
+
+    <section id="articles" class="articles-grid"></section>
+
+    <aside class="sidebar">
+      <h3>Ikuti Kami</h3>
+      <ul class="social-list">
+        <li>Facebook: <a href="https://facebook.com/tvnusantara45" target="_blank">@tvnusantara45</a></li>
+        <li>Instagram: <a href="https://instagram.com/tvnusantara45" target="_blank">@tvnusantara45</a></li>
+        <li>YouTube: <a href="https://youtube.com/@tvnusantara45" target="_blank">@tvnusantara45</a></li>
+        <li>TikTok: <a href="https://tiktok.com/@tvnusantara45" target="_blank">@tvnusantara45</a></li>
+      </ul>
+      <div class="address">
+        <h4>Alamat Kantor Pusat</h4>
+        <address>
+          Mekarsari RT 003 RW 011<br>
+          Kelurahan Gunungbatu, Kecamatan Bogor Barat<br>
+          Kota Bogor
+        </address>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div>
+          <h4>TV NUSANTARA 45</h4>
+          <p class="slogan">Mengawal Persatuan dan Kesatuan</p>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <p>Alamat: Mekarsari RT 003 RW 011, Gunungbatu, Bogor Barat, Kota Bogor</p>
+          <p>Email: <a href="mailto:info@tvnusantara45.id">info@tvnusantara45.id</a></p>
+        </div>
+        <div>
+          <h4>Ikuti Kami</h4>
+          <ul class="footer-social">
+            <li><a href="https://facebook.com/tvnusantara45" target="_blank">Facebook</a></li>
+            <li><a href="https://instagram.com/tvnusantara45" target="_blank">Instagram</a></li>
+            <li><a href="https://youtube.com/@tvnusantara45" target="_blank">YouTube</a></li>
+            <li><a href="https://tiktok.com/@tvnusantara45" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:12px;">&copy; <span id="year"></span> TV NUSANTARA 45 — Mengawal Persatuan dan Kesatuan</p>
+    </div>
+  </footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// load articles.json and render
+fetch('content/articles.json')
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('articles');
+    data.articles.forEach(a => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${a.image}" alt="${a.title}">
+        <div class="card-body">
+          <h3><a href="${a.url}">${a.title}</a></h3>
+          <p class="meta">${a.date} · ${a.category}</p>
+          <p class="excerpt">${a.excerpt}</p>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error('Failed loading articles', err);
+    document.getElementById('articles').innerHTML = '<p class="error">Gagal memuat berita. Periksa file content/articles.json.</p>';
+  });
+</script>
+</body>
+</html>

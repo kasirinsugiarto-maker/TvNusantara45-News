@@ -1,0 +1,28 @@
+{
+  "articles": [
+    {
+      "title": "TV NUSANTARA 45 Resmikan Program Liputan Daerah",
+      "date": "2025-10-01",
+      "category": "Nasional",
+      "excerpt": "Program baru untuk memperkuat pemberitaan daerah dan kebudayaan lokal.",
+      "image": "assets/sample1.jpg",
+      "url": "articles/1.html"
+    },
+    {
+      "title": "Ekonomi: Peluang UMKM Naik Kelas",
+      "date": "2025-09-25",
+      "category": "Ekonomi",
+      "excerpt": "Strategi baru mempermudah akses pasar untuk UMKM di seluruh Nusantara.",
+      "image": "assets/sample2.jpg",
+      "url": "articles/2.html"
+    },
+    {
+      "title": "Budaya: Festival Seni Lokal Memikat Wisatawan",
+      "date": "2025-08-12",
+      "category": "Budaya",
+      "excerpt": "Festival lokal meningkatkan kunjungan dan pelestarian budaya daerah.",
+      "image": "assets/sample3.jpg",
+      "url": "articles/3.html"
+    }
+  ]
+}
